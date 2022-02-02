@@ -1,53 +1,49 @@
-import React from 'react';
+import { useState } from 'react';
+import timeSince from '../../services/timeSince';
 
-function ReviewCard() {
+function ReviewCard({ item }) {
+  // console.log(item);
+  // console.log(item.img);
+
   return (
     <>
       <div style={{ display: 'flex' }}>
         <img
-          src="https://res.cloudinary.com/dwqidrcfo/image/upload/v1642473374/bru38y8ggktct2nasg1j.jpg"
+          src={`${item.img}`}
           alt="food"
           style={{
             marginTop: '50px',
             marginLeft: '30px',
             width: '200px',
             height: '150px',
+            objectFit: 'cover',
           }}
         />
         <div className="widget-item-detail ms-5 mt-5">
           <div className="widget-item-name">
             <h4>
               <a href="#" title="Customer Support">
-                Coffee or Tea
+                {item.headTitle}
               </a>
             </h4>
           </div>
           <div className="widget-item-author">
             <div className="widget-item-author-createddate">
               <div className="widget-item-author-createddate-label">
-                Date: 10-01-2018
+                {timeSince(item.createdAt)}
               </div>
               <div className="widget-item-author-createddate-date"></div>
             </div>
           </div>
           <div className="widget-item-shortdesc" style={{ width: '300px' }}>
-            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Labore,
-            atque obcaecati fugit amet dolore rerum molestiae quisquam
-            dignissimos magnam ab?
+            {item.title}
           </div>
           <div className="widget-item-buttons">
             {' '}
-            <a className="widget-item-btn widget-item-btn-readmore" href='#"'>
+            <a className="widget-item-btn widget-item-btn-readmore" href="#">
               <div>Read More</div>
             </a>
           </div>
-          <div
-            className=" widget-item-rates widget-detail-ratings"
-            data-vote=""
-            title="0.00"
-          ></div>
-
-          <div className="widget-item-values"> </div>
         </div>
       </div>
     </>

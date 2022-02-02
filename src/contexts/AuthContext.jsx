@@ -16,6 +16,15 @@ function AuthContextProvider(props) {
   const [user, setUser] = useState(null);
   const [role, setRole] = useState(localStorageService.getRole());
 
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const token = localStorage.getItem('token');
+    if (token) {
+      setUser(jwtDecode(token));
+    }
+  }, []);
+
   const handleSubmitRegister = async e => {
     e.preventDefault();
     try {
@@ -34,6 +43,7 @@ function AuthContextProvider(props) {
       setPassword('');
       setConFirmPassword('');
       setProfileImg('');
+      navigate('/login');
     } catch (err) {
       console.log(err);
     }
@@ -57,9 +67,16 @@ function AuthContextProvider(props) {
   };
 
   const login = async token => {
-    localStorageService.setToken(token);
+    await localStorageService.setToken(token);
     setUser(jwtDecode(token));
     setRole('user');
+  };
+
+  const logout = async () => {
+    await localStorageService.removeToken();
+    setUser(null);
+    setRole('guest');
+    navigate('/');
   };
 
   return (
@@ -79,6 +96,9 @@ function AuthContextProvider(props) {
         setConFirmPassword,
         profileImg,
         setProfileImg,
+        user,
+        role,
+        logout,
       }}
     >
       {props.children}
