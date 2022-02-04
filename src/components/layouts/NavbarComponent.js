@@ -49,7 +49,7 @@ function NavbarComponent() {
             </li>
             <li className="nav-item" role="presentation">
               <Link className="nav-link" to="/about">
-                About us
+                About Us
               </Link>
             </li>
             <li className="nav-item" role="presentation">

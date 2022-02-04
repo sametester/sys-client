@@ -18,7 +18,7 @@ const routes = {
     { path: '/register', element: <Register /> },
     { path: '/review', element: <Login /> },
     { path: '/contact', element: <Contact /> },
-    { path: '/about', element: <About /> },
+    // { path: '/about', element: <About /> },
     { path: '*', element: <Navigate to="/" replace={true} /> },
   ],
   user: [

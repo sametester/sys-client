@@ -1,11 +1,34 @@
+* {
+  margin: 0px;
+}
+
+h2 {
+  font-size: 50px;
+  margin-top: 50px;
+}
+
+p {
+  font-size: 20px;
+  margin-top: 30%;
+}
+
 body {
   font-family: Arial, Helvetica, sans-serif;
+}
+img {
+  width: 500px;
+  height: 700px;
+}
+
+.flex-container {
+  display: flex;
+  justify-content: space-evenly;
 }
 
 .flip-box {
   background-color: transparent;
-  width: 300px;
-  height: 200px;
+  width: 500px;
+  height: 700px;
   border: 1px solid #f1f1f1;
   perspective: 1000px;
 }
@@ -20,7 +43,7 @@ body {
 }
 
 .flip-box:hover .flip-box-inner {
-  transform: rotateX(180deg);
+  transform: rotateY(180deg);
 }
 
 .flip-box-front,
@@ -38,7 +61,7 @@ body {
 }
 
 .flip-box-back {
-  background-color: dodgerblue;
+  background-color: #555;
   color: white;
-  transform: rotateX(180deg);
+  transform: rotateY(180deg);
 }
