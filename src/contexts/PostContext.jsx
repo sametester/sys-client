@@ -15,7 +15,7 @@ function PostContextProvider(props) {
 
   // Get data post
   const fetchPost = async () => {
-    console.log('H');
+    // console.log('H');
     const res = await axios.get('/posts/');
     setPostReview(res.data.posts);
   };
@@ -30,7 +30,7 @@ function PostContextProvider(props) {
   // // }, []);
 
   const addPost = async () => {
-    console.log(55555555);
+    // console.log(55555555);
     try {
       const res = await axios.post('/posts', {
         title: title,
@@ -41,8 +41,8 @@ function PostContextProvider(props) {
       const nextPost = [res.data.post, ...postReview];
       fetchPost();
       setPostReview(nextPost);
-    } catch (e) {
-      console.log(e.data);
+    } catch (err) {
+      console.log(err.data);
     }
   };
 

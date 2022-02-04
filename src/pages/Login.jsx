@@ -1,5 +1,5 @@
 // import LoginForm from '../components/auth/LoginForm';
-
+import { Toast } from 'react-toastify';
 import { useNavigate } from 'react-router-dom';
 import { useContext } from 'react';
 import { AuthContext } from '../contexts/AuthContext';
@@ -21,7 +21,7 @@ function Login() {
 
             <form onSubmit={handleSubmitLogin}>
               <div className="form-group">
-                <label htmlFor="exampleInputEmail1" />
+                <label htmlFor="exampleInputEmail1">Email :</label>
                 <input
                   type="email"
                   className="form-control"
@@ -33,11 +33,12 @@ function Login() {
                 />
               </div>
               <div className="form-group">
-                <label htmlFor="exampleInputPassword1" />
+                <label htmlFor="exampleInputPassword1">Password :</label>
                 <input
                   type="password"
                   className="form-control"
                   placeholder="Password"
+                  required
                   value={password}
                   onChange={e => setPassword(e.target.value)}
                 />
@@ -63,7 +64,7 @@ function Login() {
               <div>
                 {' '}
                 Create new account?{' '}
-                <a href="/register" class="text-indigo-500 hover:underline">
+                <a href="/register" className="text-indigo-500 hover:underline">
                   Sign up!{' '}
                 </a>
               </div>

@@ -1,7 +1,5 @@
 import { Link } from 'react-router-dom';
 import NavbarComponent from '../components/layouts/NavbarComponent';
-// import NavbarComponent from '../components/layouts/NavbarComponent';
-import Iframe from 'react-iframe';
 import { useContext } from 'react';
 import { AuthContext } from '../contexts/AuthContext';
 
@@ -18,7 +16,7 @@ function Contact() {
             <div className="ourdetail ico-address">
               <div className="img-ico">
                 <i
-                  class="fas fa-map-marker-alt"
+                  className="fas fa-map-marker-alt"
                   style={{ marginRight: '5px' }}
                 ></i>
                 000 ถนนเจริญนคร แขวงบางลำภูล่าง
@@ -27,7 +25,7 @@ function Contact() {
                 <div className="ourdetail ico-phone">
                   <div className="img-ico">
                     <i
-                      class="fas fa-phone-square-alt"
+                      className="fas fa-phone-square-alt"
                       style={{ marginRight: '5px' }}
                     ></i>
                     <Link to="">06-3880-4197, 06-3416-6839</Link>
@@ -36,7 +34,7 @@ function Contact() {
                 <div className="ourdetail ico-mail">
                   <div className="img-ico">
                     <i
-                      class="fas fa-envelope-open-text"
+                      className="fas fa-envelope-open-text"
                       style={{ marginRight: '5px' }}
                     ></i>
                     <Link to="">seeyousoon@gmail.com</Link>
@@ -44,7 +42,10 @@ function Contact() {
                 </div>
                 <div className="ourdetail ico-Line">
                   <div className="img-ico">
-                    <i class="fab fa-line" style={{ marginRight: '5px' }}></i>
+                    <i
+                      className="fab fa-line"
+                      style={{ marginRight: '5px' }}
+                    ></i>
                     <Link to="">@SeeYouSoon</Link>
                   </div>
                 </div>
@@ -59,7 +60,7 @@ function Contact() {
                       marginRight: '5px',
                     }}
                   >
-                    <i class="fab fa-twitter"></i>
+                    <i className="fab fa-twitter"></i>
                   </Link>
 
                   <Link to="#">
@@ -69,13 +70,11 @@ function Contact() {
                 <div
                   style={{
                     display: 'flex',
-                    justifyContent: '',
                   }}
                 >
                   <iframe
                     src="https://www.google.com/maps/d/embed?mid=1CIc2l7Qp-21E_Q7EGwRbrWKOp1Q8k6vM&ehbc=2E312F"
                     style={{
-                      position: 'relative',
                       width: '600px',
                       height: '400px',
                       margin: 'auto',

@@ -24,7 +24,7 @@ function Home() {
         >
           <Carousel.Item>
             <img
-              className="d-block w-100"
+              className="d-block w-100 "
               src="https://res.cloudinary.com/dwqidrcfo/image/upload/v1643360126/breads-g3edb16e0b_1920_s6a8lf.jpg"
               alt="First slide"
             />

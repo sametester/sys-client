@@ -5,6 +5,10 @@ function ReviewCard({ item }) {
   // console.log(item);
   // console.log(item.img);
 
+  const [show, setShow] = useState(false);
+  const handleEdit = () => setShow(true);
+  const handleDelete = () => setShow(true);
+
   return (
     <>
       <div style={{ display: 'flex' }}>
@@ -14,8 +18,8 @@ function ReviewCard({ item }) {
           style={{
             marginTop: '50px',
             marginLeft: '30px',
-            width: '200px',
-            height: '150px',
+            width: '400px',
+            height: '300px',
             objectFit: 'cover',
           }}
         />
@@ -35,7 +39,7 @@ function ReviewCard({ item }) {
               <div className="widget-item-author-createddate-date"></div>
             </div>
           </div>
-          <div className="widget-item-shortdesc" style={{ width: '300px' }}>
+          <div className="widget-item-shortdesc" style={{ width: '700px' }}>
             {item.title}
           </div>
           <div className="widget-item-buttons">
@@ -43,6 +47,29 @@ function ReviewCard({ item }) {
             <a className="widget-item-btn widget-item-btn-readmore" href="#">
               <div>Read More</div>
             </a>
+            <div show={show} className="mt-1 text-muted">
+              <div className="dropdown">
+                <button className="btn text-muted" data-bs-toggle="dropdown">
+                  <i className="fa fa-ellipsis-h"></i>
+                </button>
+                <ul className="dropdown-menu">
+                  <li>
+                    <a className="dropdown-item" href="/" onClick={handleEdit}>
+                      Edit
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      className="dropdown-item"
+                      href="/"
+                      onClick={handleDelete}
+                    >
+                      Delete
+                    </a>
+                  </li>
+                </ul>
+              </div>
+            </div>
           </div>
         </div>
       </div>

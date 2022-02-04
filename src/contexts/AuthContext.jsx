@@ -3,6 +3,8 @@ import { createContext, useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import jwtDecode from 'jwt-decode';
 import * as localStorageService from '../services/localStorage';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const AuthContext = createContext();
 
@@ -44,6 +46,7 @@ function AuthContextProvider(props) {
       setConFirmPassword('');
       setProfileImg('');
       navigate('/login');
+      notify('Register Success');
     } catch (err) {
       console.log(err);
     }
@@ -61,10 +64,13 @@ function AuthContextProvider(props) {
 
       setEmail('');
       setPassword('');
+      notify('Login success');
     } catch (err) {
       console.log(err);
     }
   };
+
+  const notify = message => toast(message);
 
   const login = async token => {
     await localStorageService.setToken(token);
@@ -99,8 +105,10 @@ function AuthContextProvider(props) {
         user,
         role,
         logout,
+        notify,
       }}
     >
+      <ToastContainer />
       {props.children}
     </AuthContext.Provider>
   );

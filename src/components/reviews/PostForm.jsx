@@ -4,6 +4,8 @@ import { useContext } from 'react';
 import { PostContext } from '../../contexts/PostContext';
 
 function PostForm() {
+  const [show, setShow] = useState(false);
+
   const {
     headTitle,
     setHeadTitle,
@@ -13,7 +15,7 @@ function PostForm() {
     // setPicture,
     addPost,
   } = useContext(PostContext);
-  const [show, setShow] = useState(false);
+
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
@@ -21,6 +23,8 @@ function PostForm() {
     e.preventDefault();
     addPost();
     setShow(false);
+    setHeadTitle('');
+    setTitle('');
   };
   return (
     <>
@@ -57,22 +61,24 @@ function PostForm() {
               className="mb-3"
               controlId="exampleForm.ControlTextarea1"
             > */}
-              <Form.Label>Caption!</Form.Label>
+              <Form.Label>Title!</Form.Label>
               <Form.Control
                 as="textarea"
                 rows={3}
                 value={title}
                 onChange={e => setTitle(e.target.value)}
               />
-              {/* </Form.Group>
-            <Form.Group controlId="formFile" className="mb-3"> */}
+
+              {/* **</Form.Group>
+            <Form.Group controlId="formFile" className="mb-3">*** */}
               <Form.Label>Images</Form.Label>
               <Form.Control
                 type="file"
-                // value={picture}
-                // onChange={e => setPicture(e.target.value)}
+                className="form-control"
+                //** */ value={picture}
+                //** */ onChange={e => setPicture(e.target.value)}
               />
-            </Modal.Body>
+            </Modal.Body>{' '}
           </Form.Group>
           <Modal.Footer>
             <Button variant="secondary" onClick={handleClose}>
@@ -89,3 +95,14 @@ function PostForm() {
 }
 
 export default PostForm;
+
+//* ใส่ บรรทัด ก่อน 72  </Modal.Body>{' '}
+// {/* **</Form.Group>
+//             <Form.Group controlId="formFile" className="mb-3">*** */}
+//             <Form.Label>Images</Form.Label>
+//             <Form.Control
+//               type="file"
+//               className="form-control"
+//               //** */ value={picture}
+//               //** */ onChange={e => setPicture(e.target.value)}
+//             />

@@ -24,10 +24,10 @@ function Register() {
 
   const navigate = useNavigate();
 
-  const handleAlreadyClick = e => {
-    navigate('/login');
-    console.log(555);
-  };
+  // const handleAlreadyClick = e => {
+  //   navigate('/login');
+  //   // console.log(555);
+  // };
 
   return (
     <>
@@ -35,7 +35,7 @@ function Register() {
       <div className="container">
         <div className="row mt-0">
           <div className="col-12 col-md-6 offset-md-3 ">
-            <h2 className="my-4 text-center">REGISTER</h2>
+            <h2 className="my-0 text-center">REGISTER</h2>
 
             <form onSubmit={handleSubmitRegister}>
               <div className="form-group">
@@ -126,9 +126,9 @@ function Register() {
               <div>
                 {' '}
                 You have an account?{' '}
-                <a href="/login" class="text-indigo-500 hover:underline">
+                <Link to="/login" className="text-indigo-500 hover:underline">
                   Login!{' '}
-                </a>
+                </Link>
               </div>
             </form>
           </div>
