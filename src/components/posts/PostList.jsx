@@ -1,12 +1,12 @@
-import PostCard from './PostCard';
+// import PostCard from './PostCard';
 
-function PostList() {
-  return (
-    <>
-      <PostCard />
-      <PostCard />
-    </>
-  );
-}
+// function PostList() {
+//   return (
+//     <>
+//       <PostCard />
+//       <PostCard />
+//     </>
+//   );
+// }
 
-export default PostList;
+// export default PostList;

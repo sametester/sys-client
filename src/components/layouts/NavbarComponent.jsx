@@ -1,11 +1,13 @@
 import { useNavigate, Link } from 'react-router-dom';
 import { useContext } from 'react';
 import { AuthContext } from '../../contexts/AuthContext';
+import profileImg from '../../assets/images/profileImg.jpg';
 
 function NavbarComponent() {
   const navigate = useNavigate();
 
   const { logout, user } = useContext(AuthContext);
+  // console.log(user);
 
   return (
     <nav
@@ -17,13 +19,13 @@ function NavbarComponent() {
       }}
     >
       <div className="container-fluid ">
-        <a href="/">
+        <Link to="/">
           <img
             src="https://res.cloudinary.com/dwqidrcfo/image/upload/v1643800979/See_You_Soon_fymgbr.jpg"
             alt="logo"
             style={{ width: '50px', height: '50px', borderRadius: '50%' }}
           />
-        </a>
+        </Link>
         <button
           className="navbar-toggler"
           type="button"
@@ -86,13 +88,26 @@ function NavbarComponent() {
               </button>
             </>
           ) : (
-            <button
-              className="btn btn-secondary  btn-lg"
-              style={{ fontSize: '18px' }}
-              onClick={logout}
-            >
-              Log out
-            </button>
+            <>
+              {/* <div>
+                <img src="https://res.cloudinary.com/dwqidrcfo/image/upload/v1642659446/fvuvl7b45t2zmqavdg6w.jpg" />
+              </div> */}
+              <div className="navbar-brand" role="button">
+                <img
+                  src={profileImg}
+                  width="40"
+                  className="rounded-circle"
+                  alt="user"
+                />
+              </div>
+              <button
+                className="btn btn-secondary  btn-lg"
+                style={{ fontSize: '18px' }}
+                onClick={logout}
+              >
+                Log out
+              </button>
+            </>
           )}
         </div>
       </div>

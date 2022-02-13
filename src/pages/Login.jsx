@@ -1,6 +1,6 @@
 // import LoginForm from '../components/auth/LoginForm';
-import { Toast } from 'react-toastify';
-import { useNavigate } from 'react-router-dom';
+// import { Toast } from 'react-toastify';
+import { Link, useNavigate } from 'react-router-dom';
 import { useContext } from 'react';
 import { AuthContext } from '../contexts/AuthContext';
 import NavbarComponent from '../components/layouts/NavbarComponent';
@@ -64,9 +64,12 @@ function Login() {
               <div>
                 {' '}
                 Create new account?{' '}
-                <a href="/register" className="text-indigo-500 hover:underline">
+                <Link
+                  to="/register"
+                  className="text-indigo-500 hover:underline"
+                >
                   Sign up!{' '}
-                </a>
+                </Link>
               </div>
             </form>
           </div>

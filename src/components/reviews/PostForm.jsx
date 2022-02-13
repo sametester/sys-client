@@ -56,11 +56,13 @@ function PostForm() {
                 value={headTitle}
                 onChange={e => setHeadTitle(e.target.value)}
               />
+
               {/* </Form.Group>
             <Form.Group
               className="mb-3"
               controlId="exampleForm.ControlTextarea1"
             > */}
+
               <Form.Label>Title!</Form.Label>
               <Form.Control
                 as="textarea"
@@ -69,8 +71,8 @@ function PostForm() {
                 onChange={e => setTitle(e.target.value)}
               />
 
-              {/* **</Form.Group>
-            <Form.Group controlId="formFile" className="mb-3">*** */}
+              {/* **</Form.Group> */}
+              {/* <Form.Group controlId="formFile" className="mb-3">*** */}
               <Form.Label>Images</Form.Label>
               <Form.Control
                 type="file"
@@ -95,14 +97,3 @@ function PostForm() {
 }
 
 export default PostForm;
-
-//* ใส่ บรรทัด ก่อน 72  </Modal.Body>{' '}
-// {/* **</Form.Group>
-//             <Form.Group controlId="formFile" className="mb-3">*** */}
-//             <Form.Label>Images</Form.Label>
-//             <Form.Control
-//               type="file"
-//               className="form-control"
-//               //** */ value={picture}
-//               //** */ onChange={e => setPicture(e.target.value)}
-//             />

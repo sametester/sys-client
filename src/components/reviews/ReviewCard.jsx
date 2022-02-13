@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { Dropdown } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 import timeSince from '../../services/timeSince';
 
 function ReviewCard({ item }) {
@@ -8,30 +9,34 @@ function ReviewCard({ item }) {
 
   return (
     <>
-      <div style={{ display: 'flex', width: '1500px' }}>
-        <div style={{ width: '400px' }}>
+      <div
+        className="d-flex w-75"
+        // style={{ display: 'flex', width: '1500px' }}
+      >
+        <div>
           <img
             src={`${item.img}`}
+            className="mt-2 ms-5 w-75 h-75"
             alt="food"
-            style={{
-              marginTop: '50px',
-              marginLeft: '30px',
-              width: '400px',
-              height: '300px',
-              objectFit: 'cover',
-            }}
+            // style={{
+            //   marginTop: '50px',
+            //   marginLeft: '30px',
+            //   width: '400px',
+            //   height: '300px',
+            //   objectFit: 'cover',
+            // }}
           />
         </div>
 
         <div
-          className="widget-item-detail ms-5 mt-5"
-          style={{ flexGrow: '1', width: '700px' }}
+          className="widget-item-detail ms-5 mt-5 "
+          style={{ flexGrow: '2', width: '700px' }}
         >
           <div className="widget-item-name">
             <h4>
-              <a href="#" title="Customer Support">
+              <Link to="#" title="Customer Support">
                 {item.headTitle}
-              </a>
+              </Link>
             </h4>
           </div>
 
@@ -44,17 +49,15 @@ function ReviewCard({ item }) {
           </div>
           <div className="widget-item-shortdesc">{item.title}</div>
           <div className="widget-item-buttons">
-            {' '}
-            <a className="widget-item-btn widget-item-btn-readmore" href="#">
+            <Link className="widget-item-btn widget-item-btn-readmore" to="#">
               <div>Read More</div>
-            </a>
+            </Link>
           </div>
         </div>
         {/* <div style={{ width: '100%', display: 'flex', marginTop: '42px' }}> */}
+
         <Dropdown>
-          <Dropdown.Toggle variant="success" id="dropdown-basic">
-            ...
-          </Dropdown.Toggle>
+          <Dropdown.Toggle variant="success">...</Dropdown.Toggle>
 
           <Dropdown.Menu>
             <Dropdown.Item href="#/action-1">Edit</Dropdown.Item>

@@ -26,16 +26,19 @@ function Review() {
   //   }
   // };
 
-  useEffect(() => {
-    // console.log(a);
-    fetchPost();
-  }, []);
+  // useEffect(() => {
+  //   // console.log(a);
+  //   fetchPost();
+  // }, []);
 
   return (
     <>
       <PostForm />
       {/* <NavbarComponent /> */}
-      <div style={{ display: 'flex', flexWrap: 'wrap' }}>
+      <div
+        className="d-flex flex-wrap"
+        // style={{ display: 'flex', flexWrap: 'wrap' }}
+      >
         {postReview.map(item => (
           <ReviewCard item={item} key={item.id} />
         ))}

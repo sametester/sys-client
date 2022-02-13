@@ -64,6 +64,7 @@ function AuthContextProvider(props) {
 
       setEmail('');
       setPassword('');
+
       notify('Login success');
     } catch (err) {
       console.log(err);
@@ -72,12 +73,14 @@ function AuthContextProvider(props) {
 
   const notify = message => toast(message);
 
+  //* LOGIN
   const login = async token => {
     await localStorageService.setToken(token);
     setUser(jwtDecode(token));
     setRole('user');
   };
 
+  //* LOGOUT
   const logout = async () => {
     await localStorageService.removeToken();
     setUser(null);
@@ -108,7 +111,7 @@ function AuthContextProvider(props) {
         notify,
       }}
     >
-      <ToastContainer />
+      <ToastContainer className={'mt-5'} />
       {props.children}
     </AuthContext.Provider>
   );

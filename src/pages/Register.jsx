@@ -1,5 +1,3 @@
-// import RegisterForm from '../components/auth/RegisterForm';
-
 import { useContext } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import NavbarComponent from '../components/layouts/NavbarComponent';

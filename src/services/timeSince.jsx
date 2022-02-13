@@ -1,3 +1,4 @@
+/* eslint-disable eqeqeq */
 // @param - timeStamp - Javascript Date object or date string
 // @usage - timeSince(new Date().setFullYear(2019))
 
