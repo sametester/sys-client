@@ -32,11 +32,11 @@ function Register() {
       <NavbarComponent />;
       <div className="container">
         <div className="row mt-0">
-          <div className="col-12 col-md-6 offset-md-3 ">
-            <h2 className="my-0 text-center">REGISTER</h2>
+          <div className=" col-12 col-md-4 offset-md-3 ">
+            <h2 className="my-4 text-center">REGISTER</h2>
 
             <form onSubmit={handleSubmitRegister}>
-              <div className="form-group">
+              <div className="form-group mb-3">
                 <label htmlFor="exampleInputFirstName">First Name :</label>
                 <input
                   type="text"
@@ -47,9 +47,8 @@ function Register() {
                   onChange={e => setFirstName(e.target.value)}
                 />
               </div>
-              <br />
 
-              <div className="form-group">
+              <div className="form-group mb-3">
                 <label htmlFor="exampleInputLastName">Last Name :</label>
                 <input
                   type="text"
@@ -60,9 +59,8 @@ function Register() {
                   onChange={e => setLastName(e.target.value)}
                 />
               </div>
-              <br />
 
-              <div className="form-group">
+              <div className="form-group mb-3">
                 <label htmlFor="exampleInputEmail">Email :</label>
                 <input
                   type="email"
@@ -74,9 +72,8 @@ function Register() {
                   onChange={e => setEmail(e.target.value)}
                 />
               </div>
-              <br />
 
-              <div className="form-group">
+              <div className="form-group mb-3">
                 <label htmlFor="exampleInputPassword">Password :</label>
                 <input
                   type="password"
@@ -88,9 +85,8 @@ function Register() {
                   onChange={e => setPassword(e.target.value)}
                 />
               </div>
-              <br />
 
-              <div className="form-group">
+              <div className="form-group mb-4">
                 <label htmlFor="confirm-password">Confirm Password :</label>
                 <input
                   type="password"
@@ -102,7 +98,6 @@ function Register() {
                   onChange={e => setConFirmPassword(e.target.value)}
                 />
               </div>
-              <br />
 
               {/* <button
                 type="button"
@@ -114,13 +109,12 @@ function Register() {
 
               <button
                 type="submit"
-                className="btn btn-primary col-md-12 text-center"
+                className="btn btn-primary col-md-12 text-center mb-4"
                 // style={{ marginLeft: '10px' }}
               >
                 Sign Up
               </button>
-              <br />
-              <br />
+
               <div>
                 {' '}
                 You have an account?{' '}

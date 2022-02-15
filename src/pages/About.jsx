@@ -9,8 +9,11 @@ function About() {
   const { role } = useContext(AuthContext);
   return (
     <>
-      <h1>Card Flip with Text</h1>
-      <h3>Hover over the image below:</h3>
+      <NavbarComponent />
+      <div className="mt-5 text-center">
+        <h1>SYS</h1>
+        <h3>See You Soon</h3>
+      </div>
       <div className="d-flex justify-content-evenly mt-5">
         <div className={styles['flip-card']}>
           <div className={styles['flip-card-inner']}>

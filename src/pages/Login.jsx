@@ -16,11 +16,11 @@ function Login() {
       <NavbarComponent />;
       <div className="container">
         <div className="row mt-4">
-          <div className="col-12 col-md-6 offset-md-3">
+          <div className="   col-12 col-md-4 offset-md-3">
             <h2 className="my-4 text-center">LOGIN</h2>
 
             <form onSubmit={handleSubmitLogin}>
-              <div className="form-group">
+              <div className="form-group mb-3">
                 <label htmlFor="exampleInputEmail1">Email :</label>
                 <input
                   type="email"
@@ -32,7 +32,7 @@ function Login() {
                   onChange={e => setEmail(e.target.value)}
                 />
               </div>
-              <div className="form-group">
+              <div className="form-group mb-4">
                 <label htmlFor="exampleInputPassword1">Password :</label>
                 <input
                   type="password"
@@ -43,10 +43,10 @@ function Login() {
                   onChange={e => setPassword(e.target.value)}
                 />
               </div>
-              <br />
+
               <button
                 type="submit"
-                className="btn btn-primary col-md-12 text-center"
+                className="btn btn-primary col-md-12 text-center mb-4"
               >
                 Login
               </button>
@@ -59,8 +59,7 @@ function Login() {
               >
                 Create New Account
               </button> */}
-              <br />
-              <br />
+
               <div>
                 {' '}
                 Create new account?{' '}
