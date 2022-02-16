@@ -25,7 +25,7 @@ function Home() {
           <Carousel.Item>
             <img
               className="d-block w-100 "
-              src="https://res.cloudinary.com/dwqidrcfo/image/upload/v1643360126/breads-g3edb16e0b_1920_s6a8lf.jpg"
+              src="https://res.cloudinary.com/dwqidrcfo/image/upload/v1645026805/See_You_Soon_zwmhtk.jpg"
               alt="First slide"
             />
             {/* <Carousel.Caption></Carousel.Caption> */}
@@ -33,8 +33,16 @@ function Home() {
           <Carousel.Item>
             <img
               className="d-block w-100"
-              src="https://res.cloudinary.com/dwqidrcfo/image/upload/v1643439120/fish-gaff618152_1920_lfoix5.jpg"
+              src="https://res.cloudinary.com/dwqidrcfo/image/upload/v1643360126/breads-g3edb16e0b_1920_s6a8lf.jpg"
               alt="Second slide"
+            />
+            {/* <Carousel.Caption></Carousel.Caption> */}
+          </Carousel.Item>
+          <Carousel.Item>
+            <img
+              className="d-block w-100"
+              src="https://res.cloudinary.com/dwqidrcfo/image/upload/v1643439120/fish-gaff618152_1920_lfoix5.jpg"
+              alt="Third slide"
             />
             {/* <Carousel.Caption></Carousel.Caption> */}
           </Carousel.Item>
@@ -50,14 +58,6 @@ function Home() {
             <img
               className="d-block w-100"
               src="https://res.cloudinary.com/dwqidrcfo/image/upload/v1643439157/food-g94ec3f3e0_1920_s1kglu.jpg"
-              alt="Third slide"
-            />
-            {/* <Carousel.Caption></Carousel.Caption> */}
-          </Carousel.Item>
-          <Carousel.Item>
-            <img
-              className="d-block w-100"
-              src="https://res.cloudinary.com/dwqidrcfo/image/upload/v1642490876/rtuorcoccgtn2t1mnilp.jpg"
               alt="Third slide"
             />
             {/* <Carousel.Caption></Carousel.Caption> */}
