@@ -9,10 +9,10 @@ function Contact() {
   return (
     <>
       {role === 'guest' ? <NavbarComponent /> : <></>}
-      <div className="widget-other-item other-item">
-        <div className="container reservation-container">
-          <h2>See You Soon</h2>
-          <div className="short-detail">
+      <div className="widget-other-item other-item ">
+        <div className="container reservation-container ">
+          <h2 className="fw-bold">See You Soon</h2>
+          <div className="short-detail ">
             Lorem ipsum dolor sit
             <div className="ourdetail ico-address">
               <div className="img-ico">
@@ -62,7 +62,7 @@ function Contact() {
                     //   marginRight: '5px',
                     // }}
                   >
-                    <i className="fab fa-twitter"></i>
+                    <i className="fab fa-twitter "></i>
                   </Link>
 
                   <Link to="#">

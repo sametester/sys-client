@@ -24,6 +24,10 @@ function AuthContextProvider(props) {
     const token = localStorage.getItem('token');
     if (token) {
       setUser(jwtDecode(token));
+      axios
+        .get('/users/me')
+        .then(res => setUser(res.data.user))
+        .catch(err => console.log(err));
     }
   }, []);
 
@@ -36,7 +40,7 @@ function AuthContextProvider(props) {
         email,
         password,
         confirmPassword: conFirmPassword,
-        // profileImg,
+        profileImg,
       });
 
       setFirstName('');
@@ -88,6 +92,10 @@ function AuthContextProvider(props) {
     navigate('/');
   };
 
+  const updateUser = value => {
+    setUser(prev => ({ ...prev, ...value }));
+  };
+
   return (
     <AuthContext.Provider
       value={{
@@ -107,7 +115,9 @@ function AuthContextProvider(props) {
         setProfileImg,
         user,
         role,
+        login,
         logout,
+        updateUser,
         notify,
       }}
     >

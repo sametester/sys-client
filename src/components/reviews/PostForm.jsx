@@ -51,8 +51,8 @@ function PostForm() {
             <Modal.Body>
               <Form.Label>Head Title</Form.Label>
               <Form.Control
+                className="mb-2"
                 type="email"
-                placeholder=""
                 value={headTitle}
                 onChange={e => setHeadTitle(e.target.value)}
               />
@@ -63,8 +63,9 @@ function PostForm() {
               controlId="exampleForm.ControlTextarea1"
             > */}
 
-              <Form.Label>Title!</Form.Label>
+              <Form.Label>Title </Form.Label>
               <Form.Control
+                className="mb-2"
                 as="textarea"
                 rows={3}
                 value={title}
