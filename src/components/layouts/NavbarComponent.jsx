@@ -46,7 +46,7 @@ function NavbarComponent() {
   return (
     <>
       {loading && <Spinner />};
-      <nav className=" navbar navbar-expand-lg p-3 bg-white fs-5 mt-3">
+      <nav className=" navbar navbar-expand-lg p-3 bg-white fs-5 mt-1">
         <div className="container-fluid ">
           <Link to="/">
             <img
@@ -68,6 +68,7 @@ function NavbarComponent() {
           >
             {/* <span className="navbar-toggler-icon"></span> */}
           </button>
+
           <div className="collapse navbar-collapse " id="navbarText ">
             {/* *** */}
             <ul
