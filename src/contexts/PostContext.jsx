@@ -6,82 +6,77 @@ import { AuthContext } from '../contexts/AuthContext';
 const PostContext = createContext();
 
 function PostContextProvider(props) {
-  const { isLogin } = useContext(AuthContext);
+    const { isLogin } = useContext(AuthContext);
 
-  const [postReview, setPostReview] = useState([]);
-  const [headTitle, setHeadTitle] = useState('');
-  const [title, setTitle] = useState('');
-  const [picture, setPicture] = useState('');
+    const [postReview, setPostReview] = useState([]);
+    const [headTitle, setHeadTitle] = useState('');
+    const [title, setTitle] = useState('');
+    const [picture, setPicture] = useState('');
 
-  // Get data post
-  const fetchPost = async () => {
-    // console.log('H');
-    const res = await axios.get('/posts/');
-    setPostReview(res.data.posts);
-  };
+    // Get data post
+    const fetchPost = async () => {
+        // console.log('H');
+        const res = await axios.get('/posts/');
+        setPostReview(res.data.posts);
+    };
 
-  useEffect(() => {
-    fetchPost();
-  }, [isLogin]);
+    useEffect(() => {
+        fetchPost();
+    }, [isLogin]);
 
-  // Get data profile
-  // // useEffect(() => {
-  // // fetchPostProfile();
-  // // }, []);
+    const addPost = async () => {
+        try {
+            const formData = new FormData();
+            formData.append('profileImg', picture);
+            formData.append('title', title);
+            formData.append('headTitle', headTitle);
 
-  const addPost = async () => {
-    // console.log(55555555);
-    try {
-      const res = await axios.post('/posts', {
-        title: title,
-        headTitle: headTitle,
-        // img: picture,
-      });
-      console.log(res.status);
-      const nextPost = [res.data.post, ...postReview];
-      fetchPost();
-      setPostReview(nextPost);
-    } catch (err) {
-      console.log(err.data);
-    }
-  };
+            const res = await axios.post('/posts', formData);
+            console.log(res.status);
+            const nextPost = [res.data.post, ...postReview];
+            fetchPost();
+            setPostReview(nextPost);
+        } catch (err) {
+            console.log(err.data);
+        }
+    };
 
-  const updatePost = async (id, value) => {
-    const idx = postReview.findIndex(item => item.id === id);
-    const newPost = [...postReview];
+    const updatePost = async (id, value) => {
+        const idx = postReview.findIndex((item) => item.id === id);
+        const newPost = [...postReview];
 
-    const res = await axios.put(`/posts/${id}`, { caption: value });
+        const res = await axios.put(`/posts/${id}`, { caption: value });
 
-    newPost[idx] = res.data.post;
+        newPost[idx] = res.data.post;
 
-    setPostReview(newPost);
-  };
+        setPostReview(newPost);
+    };
 
-  const deletePost = async id => {
-    const res = await axios.delete(`/posts/${id}`);
-    const newPost = postReview.filter(item => item.id !== id);
-    setPostReview(newPost);
-  };
+    const deletePost = async (id) => {
+        const res = await axios.delete(`/posts/${id}`);
+        const newPost = postReview.filter((item) => item.id !== id);
+        setPostReview(newPost);
+    };
 
-  return (
-    <PostContext.Provider
-      value={{
-        addPost,
-        postReview,
-        headTitle,
-        setHeadTitle,
-        title,
-        setTitle,
-        updatePost,
-        deletePost,
-        picture,
-        setPicture,
-        fetchPost,
-      }}
-    >
-      {props.children}
-    </PostContext.Provider>
-  );
+    return (
+        <PostContext.Provider
+            value={{
+                addPost,
+                postReview,
+                headTitle,
+                setHeadTitle,
+                title,
+                setTitle,
+                updatePost,
+                deletePost,
+                picture,
+                setPicture,
+                fetchPost,
+            }}
+        >
+            {props.children}
+        </PostContext.Provider>
+    );
 }
 
 export default PostContextProvider;
