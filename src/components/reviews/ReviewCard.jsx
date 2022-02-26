@@ -20,6 +20,7 @@ function ReviewCard({ item }) {
     const [isLike, setIsLike] = useState(
         item.Likes.findIndex((item) => item.userId === userData.id) !== -1
     );
+    console.log(item);
 
     const modalEl = useRef();
     const modalEl2 = useRef();

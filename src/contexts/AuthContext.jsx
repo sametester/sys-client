@@ -101,9 +101,19 @@ function AuthContextProvider(props) {
 
     const fetchUser = async () => {
         const a = jwtDecode(token);
-        const res = await axios.get(`/user/${a.username}`);
+        console.log(a.firstName);
+        const res = await axios.get(`/users/getMyData/${a.firstName}`);
         setUserData(res.data.user);
+        console.log(res.data.user);
     };
+
+    useEffect(() => {
+        fetchUser();
+    }, [token]);
+
+    if (!userData) {
+        return <></>;
+    }
 
     return (
         <AuthContext.Provider
@@ -129,6 +139,7 @@ function AuthContextProvider(props) {
                 updateUser,
                 notify,
                 userData,
+                fetchUser,
             }}
         >
             <ToastContainer className={'mt-5'} />
