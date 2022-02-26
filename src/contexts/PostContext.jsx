@@ -32,6 +32,7 @@ function PostContextProvider(props) {
 
             const res = await axios.post('/posts', formData);
             const nextPost = [res.data.post, ...postReview];
+            console.log(res.data.post);
             fetchPost();
             setPostReview(nextPost);
         } catch (err) {
@@ -48,7 +49,6 @@ function PostContextProvider(props) {
         const idx = postReview.findIndex((item) => item.id === id);
         const newPost = [...postReview];
         const res = await axios.patch(`/posts/${id}`, formData);
-        console.log(res.data.post);
         newPost[idx] = res.data.post;
         setPostReview(newPost);
     };

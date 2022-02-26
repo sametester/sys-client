@@ -19,12 +19,12 @@ function AuthContextProvider(props) {
     const [role, setRole] = useState(localStorageService.getRole());
     const [userData, setUserData] = useState('');
 
-    const token = localStorage.getItem('token');
+    const token = localStorageService.getToken('token');
 
     const navigate = useNavigate();
 
     useEffect(() => {
-        const token = localStorage.getItem('token');
+        const token = localStorageService.getToken('token');
         if (token) {
             setUser(jwtDecode(token));
             axios
@@ -100,20 +100,16 @@ function AuthContextProvider(props) {
     };
 
     const fetchUser = async () => {
-        const a = jwtDecode(token);
-        console.log(a.firstName);
-        const res = await axios.get(`/users/getMyData/${a.firstName}`);
-        setUserData(res.data.user);
-        console.log(res.data.user);
+        if (token) {
+            const a = jwtDecode(token);
+            const res = await axios.get(`/users/getMyData/${a.firstName}`);
+            setUserData(res.data.user);
+        }
     };
 
     useEffect(() => {
         fetchUser();
     }, [token]);
-
-    if (!userData) {
-        return <></>;
-    }
 
     return (
         <AuthContext.Provider
