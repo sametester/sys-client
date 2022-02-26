@@ -9,14 +9,11 @@ function ReviewCard({ item }) {
 
   return (
     <>
-      <div
-        className="d-flex w-75"
-        // style={{ display: 'flex', width: '1500px' }}
-      >
+      <div className="d-flex w-75">
         <div>
           <img
             src={`${item.img}`}
-            className="mt-2 ms-5 w-75 h-75"
+            className=" mt-2 ms-5 w-75 h-75 "
             alt="food"
             // style={{
             //   marginTop: '50px',
