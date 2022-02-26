@@ -72,10 +72,11 @@ function Contact() {
                 <div
                   className="d-flex"
                   // style={{
-                  //   display: 'flex',
+                  //   display: 'flex',s
                   // }}
                 >
                   <iframe
+                    title="myFrame"
                     src="https://www.google.com/maps/d/embed?mid=1CIc2l7Qp-21E_Q7EGwRbrWKOp1Q8k6vM&ehbc=2E312F"
                     className="m-auto mt-5 image-fluid"
                     width="600px"

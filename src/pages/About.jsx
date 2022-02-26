@@ -1,6 +1,6 @@
 import { useContext } from 'react';
 import { AuthContext } from '../contexts/AuthContext';
-import NavbarComponent from '../components/layouts/NavbarComponent';
+// import NavbarComponent from '../components/layouts/NavbarComponent';
 import 'react-card-flip';
 import styles from '../Page.module.css';
 
