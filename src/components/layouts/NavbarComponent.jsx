@@ -17,7 +17,6 @@ function NavbarComponent() {
     const inputEl = useRef();
 
     const { logout, user, updateUser } = useContext(AuthContext);
-    // console.log(user);
 
     const handleClickProfile = () => {
         const modalObject = new Modal(modalEl.current);
@@ -33,7 +32,6 @@ function NavbarComponent() {
             formData.append('profileImg', imgInput);
 
             const res = await axios.patch('/users/profile-img', formData);
-            console.log(5555);
             updateUser({ profileImg: res.data.profileImg });
             modal.hide();
         } catch (err) {
