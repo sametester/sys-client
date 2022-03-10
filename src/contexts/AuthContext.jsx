@@ -9,139 +9,139 @@ import 'react-toastify/dist/ReactToastify.css';
 const AuthContext = createContext();
 
 function AuthContextProvider(props) {
-    const [firstName, setFirstName] = useState('');
-    const [lastName, setLastName] = useState('');
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
-    const [conFirmPassword, setConFirmPassword] = useState('');
-    const [profileImg, setProfileImg] = useState('');
-    const [user, setUser] = useState(null);
-    const [role, setRole] = useState(localStorageService.getRole());
-    const [userData, setUserData] = useState('');
+  const [firstName, setFirstName] = useState('');
+  const [lastName, setLastName] = useState('');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [conFirmPassword, setConFirmPassword] = useState('');
+  const [profileImg, setProfileImg] = useState('');
+  const [user, setUser] = useState(null);
+  const [role, setRole] = useState(localStorageService.getRole());
+  const [userData, setUserData] = useState('');
 
+  const token = localStorageService.getToken('token');
+
+  const navigate = useNavigate();
+
+  useEffect(() => {
     const token = localStorageService.getToken('token');
+    if (token) {
+      setUser(jwtDecode(token));
+      axios
+        .get('/users/me')
+        .then(res => setUser(res.data.user))
+        .catch(err => console.log(err));
+    }
+  }, []);
 
-    const navigate = useNavigate();
+  useEffect(() => {
+    fetchUser();
+  }, [token]);
 
-    useEffect(() => {
-        const token = localStorageService.getToken('token');
-        if (token) {
-            setUser(jwtDecode(token));
-            axios
-                .get('/users/me')
-                .then((res) => setUser(res.data.user))
-                .catch((err) => console.log(err));
-        }
-    }, []);
+  const handleSubmitRegister = async e => {
+    e.preventDefault();
+    try {
+      const res = await axios.post('/users/register', {
+        firstName,
+        lastName,
+        email,
+        password,
+        confirmPassword: conFirmPassword,
+        profileImg,
+      });
 
-    const handleSubmitRegister = async (e) => {
-        e.preventDefault();
-        try {
-            const res = await axios.post('/users/register', {
-                firstName,
-                lastName,
-                email,
-                password,
-                confirmPassword: conFirmPassword,
-                profileImg,
-            });
+      setFirstName('');
+      setLastName('');
+      setEmail('');
+      setPassword('');
+      setConFirmPassword('');
+      setProfileImg('');
+      navigate('/login');
+      notify('Register Success');
+    } catch (err) {
+      console.log(err);
+    }
+  };
 
-            setFirstName('');
-            setLastName('');
-            setEmail('');
-            setPassword('');
-            setConFirmPassword('');
-            setProfileImg('');
-            navigate('/login');
-            notify('Register Success');
-        } catch (err) {
-            console.log(err);
-        }
-    };
+  const handleSubmitLogin = async e => {
+    e.preventDefault();
+    try {
+      const res = await axios.post('/users/login', {
+        email,
+        password,
+      });
 
-    const handleSubmitLogin = async (e) => {
-        e.preventDefault();
-        try {
-            const res = await axios.post('/users/login', {
-                email,
-                password,
-            });
+      login(res.data.token);
 
-            login(res.data.token);
+      setEmail('');
+      setPassword('');
 
-            setEmail('');
-            setPassword('');
+      notify('Login success');
+    } catch (err) {
+      console.log(err);
+    }
+  };
 
-            notify('Login success');
-        } catch (err) {
-            console.log(err);
-        }
-    };
+  const notify = message => toast(message);
 
-    const notify = (message) => toast(message);
+  //* LOGIN
+  const login = async token => {
+    await localStorageService.setToken(token);
+    setUser(jwtDecode(token));
+    setRole('user');
+  };
 
-    //* LOGIN
-    const login = async (token) => {
-        await localStorageService.setToken(token);
-        setUser(jwtDecode(token));
-        setRole('user');
-    };
+  //* LOGOUT
+  const logout = async () => {
+    await localStorageService.removeToken();
+    setUser(null);
+    setRole('guest');
+    navigate('/');
+  };
 
-    //* LOGOUT
-    const logout = async () => {
-        await localStorageService.removeToken();
-        setUser(null);
-        setRole('guest');
-        navigate('/');
-    };
+  const updateUser = value => {
+    setUser(prev => ({ ...prev, ...value }));
+  };
 
-    const updateUser = (value) => {
-        setUser((prev) => ({ ...prev, ...value }));
-    };
+  const fetchUser = async () => {
+    if (token) {
+      const a = jwtDecode(token);
+      const res = await axios.get(`/users/getMyData/${a.firstName}`);
+      setUserData(res.data.user);
+    }
+  };
 
-    const fetchUser = async () => {
-        if (token) {
-            const a = jwtDecode(token);
-            const res = await axios.get(`/users/getMyData/${a.firstName}`);
-            setUserData(res.data.user);
-        }
-    };
-
-    useEffect(() => {
-        fetchUser();
-    }, [token]);
-
-    return (
-        <AuthContext.Provider
-            value={{
-                handleSubmitRegister,
-                handleSubmitLogin,
-                firstName,
-                setFirstName,
-                lastName,
-                setLastName,
-                email,
-                setEmail,
-                password,
-                setPassword,
-                conFirmPassword,
-                setConFirmPassword,
-                profileImg,
-                setProfileImg,
-                user,
-                role,
-                login,
-                logout,
-                updateUser,
-                notify,
-                userData,
-                fetchUser,
-            }}
-        >
-            <ToastContainer className={'mt-5'} />
-            {props.children}
-        </AuthContext.Provider>
-    );
+  return (
+    <AuthContext.Provider
+      value={{
+        handleSubmitRegister,
+        handleSubmitLogin,
+        firstName,
+        setFirstName,
+        lastName,
+        setLastName,
+        email,
+        setEmail,
+        password,
+        setPassword,
+        conFirmPassword,
+        setConFirmPassword,
+        profileImg,
+        setProfileImg,
+        user,
+        role,
+        login,
+        logout,
+        updateUser,
+        notify,
+        userData,
+        fetchUser,
+      }}
+    >
+      <ToastContainer className={'mt-5'} />
+      {props.children}
+    </AuthContext.Provider>
+  );
 }
 
 export default AuthContextProvider;

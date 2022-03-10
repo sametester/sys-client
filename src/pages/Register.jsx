@@ -1,5 +1,5 @@
 import { useContext } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import NavbarComponent from '../components/layouts/NavbarComponent';
 import { AuthContext } from '../contexts/AuthContext';
 
@@ -16,28 +16,21 @@ function Register() {
     setPassword,
     conFirmPassword,
     setConFirmPassword,
-    profileImg,
-    setProfileImg,
+    // profileImg,
+    // setProfileImg,
   } = useContext(AuthContext);
-
-  const navigate = useNavigate();
-
-  // const handleAlreadyClick = e => {
-  //   navigate('/login');
-  //   // console.log(555);
-  // };
 
   return (
     <>
       <NavbarComponent />;
-      <div className="container">
-        <div className="row mt-0">
-          <div className=" col-12 col-md-4 offset-md-3 ">
+      <div className="container ">
+        <div className="row mt-0 ">
+          <div className=" col-12 col-md-4 offset-md-3  ">
             <h2 className="my-4 text-center">REGISTER</h2>
 
             <form onSubmit={handleSubmitRegister}>
               <div className="form-group mb-3">
-                <label htmlFor="exampleInputFirstName">First Name :</label>
+                <label htmlFor="FirstName">First Name :</label>
                 <input
                   type="text"
                   className="form-control"
@@ -49,7 +42,7 @@ function Register() {
               </div>
 
               <div className="form-group mb-3">
-                <label htmlFor="exampleInputLastName">Last Name :</label>
+                <label htmlFor="LastName">Last Name :</label>
                 <input
                   type="text"
                   className="form-control"
@@ -61,7 +54,7 @@ function Register() {
               </div>
 
               <div className="form-group mb-3">
-                <label htmlFor="exampleInputEmail">Email :</label>
+                <label htmlFor="Email">Email :</label>
                 <input
                   type="email"
                   className="form-control"
@@ -74,11 +67,11 @@ function Register() {
               </div>
 
               <div className="form-group mb-3">
-                <label htmlFor="exampleInputPassword">Password :</label>
+                <label htmlFor="Password">Password :</label>
                 <input
                   type="password"
                   className="form-control"
-                  id="exampleInputPassword"
+                  id="Password"
                   placeholder="Password"
                   required
                   value={password}
@@ -91,7 +84,7 @@ function Register() {
                 <input
                   type="password"
                   className="form-control"
-                  id="exampleInputConfirmPassword"
+                  id="ConfirmPassword"
                   placeholder="Confirm Password"
                   required
                   value={conFirmPassword}
@@ -99,26 +92,17 @@ function Register() {
                 />
               </div>
 
-              {/* <button
-                type="button"
-                className="btn btn-success "
-                onClick={handleAlreadyClick}
-              >
-                Already have an account?
-              </button> */}
-
               <button
                 type="submit"
-                className="btn btn-primary col-md-12 text-center mb-4"
-                // style={{ marginLeft: '10px' }}
+                className="btn btn-primary col-md-12 text-center mb-4 "
+                disabled={!conFirmPassword}
               >
                 Sign Up
               </button>
 
-              <div>
-                {' '}
+              <div className="mb-4">
                 You have an account?{' '}
-                <Link to="/login" className="text-indigo-500 hover:underline">
+                <Link to="/login" className="text-indigo-500 hover:underline ">
                   Login!{' '}
                 </Link>
               </div>

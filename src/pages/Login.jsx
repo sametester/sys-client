@@ -1,13 +1,9 @@
-// import LoginForm from '../components/auth/LoginForm';
-// import { Toast } from 'react-toastify';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { useContext } from 'react';
 import { AuthContext } from '../contexts/AuthContext';
 import NavbarComponent from '../components/layouts/NavbarComponent';
 
 function Login() {
-  const navigate = useNavigate();
-
   const { handleSubmitLogin, email, setEmail, password, setPassword } =
     useContext(AuthContext);
 
@@ -21,7 +17,7 @@ function Login() {
 
             <form onSubmit={handleSubmitLogin}>
               <div className="form-group mb-3">
-                <label htmlFor="exampleInputEmail1">Email :</label>
+                <label htmlFor="Email">Email :</label>
                 <input
                   type="email"
                   className="form-control"
@@ -33,7 +29,7 @@ function Login() {
                 />
               </div>
               <div className="form-group mb-4">
-                <label htmlFor="exampleInputPassword1">Password :</label>
+                <label htmlFor="Password">Password :</label>
                 <input
                   type="password"
                   className="form-control"
@@ -47,18 +43,10 @@ function Login() {
               <button
                 type="submit"
                 className="btn btn-primary col-md-12 text-center mb-4"
+                disabled={!password}
               >
                 Login
               </button>
-
-              {/* <button
-                type="button"
-                className="btn btn-success"
-                style={{ marginLeft: '10px' }}
-                onClick={() => navigate('/register')}
-              >
-                Create New Account
-              </button> */}
 
               <div>
                 {' '}
@@ -79,28 +67,3 @@ function Login() {
 }
 
 export default Login;
-
-// {
-//   /* <LoginForm />; */
-// }
-
-// <form>
-//   <div className="form-inner">
-//     <h2>เข้าสู่ระบบ</h2>
-//   </div>
-
-//   <div className="form-group" style={{}}>
-//     <label htmlFor="email">Email: </label>
-//     <input type="email" name="email" id="email" />
-//   </div>
-
-//   <div className="form-group">
-//     <label htmlFor="password">Password: </label>
-//     <input type="password" name="password" id="password" />
-//   </div>
-//   <label>
-//     <input type="checkbox" name="remember" /> Remember me
-//   </label>
-//   <br />
-//   <button type="submit">Login</button>
-// </form>

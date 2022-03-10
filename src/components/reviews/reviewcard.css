@@ -1,4 +1,8 @@
 .cardTitle {
-    word-break: break-all;
-    white-space: normal;
+  word-break: break-all;
+  white-space: normal;
+}
+
+h4 {
+  color: blue;
 }

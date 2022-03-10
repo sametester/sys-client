@@ -10,17 +10,19 @@ import axios from '../../config/axios';
 import { AuthContext } from '../../contexts/AuthContext';
 
 function ReviewCard({ item }) {
-  const { updatePost, fetchPost } = useContext(PostContext);
+  const { updatePost, deletePost, fetchPost } = useContext(PostContext);
   const { userData } = useContext(AuthContext);
+
   const [editHeadTitle, setEditHeadTitle] = useState(item.headTitle);
   const [editTitle, setEditTitle] = useState(item.title);
   const [editPicture, setEditPicture] = useState(item.img);
-  const { deletePost } = useContext(PostContext);
+
   const [modal, setModal] = useState(null);
   const [isLike, setIsLike] = useState(
     item.Likes.findIndex(item => item.userId === userData.id) !== -1
   );
-  console.log(item);
+
+  // console.log(item);
 
   const modalEl = useRef();
   const modalEl2 = useRef();
@@ -100,11 +102,12 @@ function ReviewCard({ item }) {
           <div>
             <div className="widget-item-name">
               <h4>
-                <Link to="#" title="Customer Support">
+                <h4 to="#" title="Customer Support">
                   {item.headTitle}
-                </Link>
+                </h4>
               </h4>
             </div>
+
             <div>
               {item?.User?.firstName} {item?.User?.lastName}
             </div>
@@ -116,11 +119,13 @@ function ReviewCard({ item }) {
                 </div>
               </div>
             </div>
+
             <div className="widget-item-shortdesc">
               {item.title.length > 60
                 ? item.title.slice(1, 100) + '...'
                 : item.title}
             </div>
+
             <div
               style={{
                 color: 'blue',
@@ -133,6 +138,7 @@ function ReviewCard({ item }) {
               {item.title.length > 60 ? 'Read More' : <></>}
             </div>
           </div>
+
           <div>
             <button className="btn" onClick={isLike ? unLikePost : likePost}>
               <i className={`bi bi-hand-thumbs-up${isLike ? '-fill' : ''}`}></i>
@@ -141,19 +147,23 @@ function ReviewCard({ item }) {
           </div>
         </div>
 
-        <Dropdown>
-          <Dropdown.Toggle variant="success">...</Dropdown.Toggle>
+        {item.userId === userData.id ? (
+          <Dropdown>
+            <Dropdown.Toggle variant="success">...</Dropdown.Toggle>
 
-          <Dropdown.Menu>
-            <Dropdown.Item onClick={handleClickShowEditForm}>
-              Edit
-            </Dropdown.Item>
-            <hr />
-            <Dropdown.Item onClick={handleClickShowDeleteForm}>
-              Delete
-            </Dropdown.Item>
-          </Dropdown.Menu>
-        </Dropdown>
+            <Dropdown.Menu>
+              <Dropdown.Item onClick={handleClickShowEditForm}>
+                Edit
+              </Dropdown.Item>
+              <hr />
+              <Dropdown.Item onClick={handleClickShowDeleteForm}>
+                Delete
+              </Dropdown.Item>
+            </Dropdown.Menu>
+          </Dropdown>
+        ) : (
+          <></>
+        )}
       </div>
 
       {/* More Detail */}
@@ -169,7 +179,7 @@ function ReviewCard({ item }) {
               />
             </div>
 
-            <div className="d-flex w-75 pt-4">
+            <div className="d-flex pe-4 pt-4">
               <div style={{ paddingBottom: '50px' }}>
                 <img
                   src={`${item.img}`}
@@ -186,7 +196,7 @@ function ReviewCard({ item }) {
               <div
                 className="widget-item-detail ms-5 mt-5 "
                 style={{
-                  flexGrow: '2',
+                  flexGrow: '3',
                   width: '700px',
                   paddingBottom: '50px',
                   display: 'flex',
@@ -230,19 +240,23 @@ function ReviewCard({ item }) {
                 </div>
               </div>
 
-              <Dropdown>
-                <Dropdown.Toggle variant="success">...</Dropdown.Toggle>
+              {item.userId === userData.id ? (
+                <Dropdown>
+                  <Dropdown.Toggle variant="success">...</Dropdown.Toggle>
 
-                <Dropdown.Menu>
-                  <Dropdown.Item onClick={handleClickShowEditForm}>
-                    Edit
-                  </Dropdown.Item>
-                  <hr />
-                  <Dropdown.Item onClick={handleClickShowDeleteForm}>
-                    Delete
-                  </Dropdown.Item>
-                </Dropdown.Menu>
-              </Dropdown>
+                  <Dropdown.Menu>
+                    <Dropdown.Item onClick={handleClickShowEditForm}>
+                      Edit
+                    </Dropdown.Item>
+                    <hr />
+                    <Dropdown.Item onClick={handleClickShowDeleteForm}>
+                      Delete
+                    </Dropdown.Item>
+                  </Dropdown.Menu>
+                </Dropdown>
+              ) : (
+                <></>
+              )}
             </div>
           </div>
         </div>
@@ -253,7 +267,7 @@ function ReviewCard({ item }) {
         <div className="modal-dialog">
           <div className="modal-content">
             <div className="modal-header">
-              <h5 className="modal-title">Edit Post</h5>
+              <h5 className="modal-title fw-bold">Edit Post</h5>
               <button
                 type="button"
                 className="btn-close"
@@ -310,7 +324,7 @@ function ReviewCard({ item }) {
         <div className="modal-dialog">
           <div className="modal-content">
             <div className="modal-header">
-              <h5 className="modal-title">Delete Post</h5>
+              <h5 className="modal-title fw-bold">Delete Post</h5>
               <button
                 type="button"
                 className="btn-close"

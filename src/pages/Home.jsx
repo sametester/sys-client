@@ -9,19 +9,10 @@ function Home() {
   return (
     <>
       {role === 'guest' ? <NavbarComponent /> : <></>}
-      <div
-        className="p-3 bg-light bg-gradient text-dark"
-        // style={{ height: '90vh' }}
-      >
+      <div className="p-3 bg-light bg-gradient text-dark">
         <h1 className="text-center">See You Soon</h1>
 
         <Carousel className="w-50 m-auto" variant="dark">
-          {/* style=
-          {{
-            width: '700px',
-
-            margin: 'auto',
-          }} */}
           <Carousel.Item>
             <img
               className="d-block w-100 "
@@ -63,13 +54,6 @@ function Home() {
             {/* <Carousel.Caption></Carousel.Caption> */}
           </Carousel.Item>
         </Carousel>
-        {/* <div className="container my-5">
-          <div className="row d-flex align-items-center justify-content-center">
-            <div className="col-lg-6 col-md-9">
-              
-            </div>
-          </div>
-        </div> */}
       </div>
     </>
   );
