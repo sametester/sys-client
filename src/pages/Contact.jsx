@@ -52,11 +52,11 @@ function Contact() {
                 </div>
                 <div className="d-flex">
                   <iframe
+                    className="m-auto mb-2 mt-3 image-fluid"
                     title="myFrame"
-                    src="https://www.google.com/maps/d/embed?mid=1CIc2l7Qp-21E_Q7EGwRbrWKOp1Q8k6vM&ehbc=2E312F"
-                    className="m-auto mt-5 image-fluid"
-                    width="600px"
-                    height="400px"
+                    src="https://www.google.com/maps/d/u/0/embed?mid=1cDVXkM8pG2-OakKfyJaZbe5_rvrL5uCK&ehbc=2E312F"
+                    width="600"
+                    height="400"
                   />
                 </div>
               </div>
