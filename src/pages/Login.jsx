@@ -23,7 +23,6 @@ function Login() {
                   className="form-control"
                   aria-describedby="emailHelp"
                   placeholder="Enter email"
-                  required
                   value={email}
                   onChange={e => setEmail(e.target.value)}
                 />
@@ -34,7 +33,6 @@ function Login() {
                   type="password"
                   className="form-control"
                   placeholder="Password"
-                  required
                   value={password}
                   onChange={e => setPassword(e.target.value)}
                 />
@@ -43,19 +41,18 @@ function Login() {
               <button
                 type="submit"
                 className="btn btn-primary col-md-12 text-center mb-4"
-                disabled={!password}
+                // disabled={!password}
               >
                 Login
               </button>
 
               <div>
-                {' '}
-                Create new account?{' '}
+                Create new account?
                 <Link
                   to="/register"
                   className="text-indigo-500 hover:underline"
                 >
-                  Sign up!{' '}
+                  Sign up!
                 </Link>
               </div>
             </form>

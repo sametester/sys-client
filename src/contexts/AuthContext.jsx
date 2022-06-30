@@ -18,8 +18,11 @@ function AuthContextProvider(props) {
   const [user, setUser] = useState(null);
   const [role, setRole] = useState(localStorageService.getRole());
   const [userData, setUserData] = useState('');
+  const [isPerform, setIsPerform] = useState(false);
 
   const token = localStorageService.getToken('token');
+
+  const notify = message => toast(message);
 
   const navigate = useNavigate();
 
@@ -41,6 +44,7 @@ function AuthContextProvider(props) {
   const handleSubmitRegister = async e => {
     e.preventDefault();
     try {
+      setIsPerform(true);
       const res = await axios.post('/users/register', {
         firstName,
         lastName,
@@ -57,6 +61,7 @@ function AuthContextProvider(props) {
       setConFirmPassword('');
       setProfileImg('');
       navigate('/login');
+      setIsPerform(false);
       notify('Register Success');
     } catch (err) {
       console.log(err);
@@ -66,23 +71,23 @@ function AuthContextProvider(props) {
   const handleSubmitLogin = async e => {
     e.preventDefault();
     try {
+      setIsPerform(true);
+
       const res = await axios.post('/users/login', {
         email,
         password,
       });
 
       login(res.data.token);
-
+      setIsPerform(false);
       setEmail('');
       setPassword('');
-
       notify('Login success');
     } catch (err) {
+      notify('Login fail email or password is incorrect');
       console.log(err);
     }
   };
-
-  const notify = message => toast(message);
 
   //* LOGIN
   const login = async token => {
@@ -95,6 +100,7 @@ function AuthContextProvider(props) {
   const logout = async () => {
     await localStorageService.removeToken();
     setUser(null);
+    notify('Logout success');
     setRole('guest');
     navigate('/');
   };
@@ -109,6 +115,12 @@ function AuthContextProvider(props) {
       const res = await axios.get(`/users/getMyData/${a.firstName}`);
       setUserData(res.data.user);
     }
+  };
+
+  const validateEmailFormat = value => {
+    if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(value))
+      return true;
+    return false;
   };
 
   return (
@@ -136,6 +148,8 @@ function AuthContextProvider(props) {
         notify,
         userData,
         fetchUser,
+        isPerform,
+        validateEmailFormat,
       }}
     >
       <ToastContainer className={'mt-5'} />

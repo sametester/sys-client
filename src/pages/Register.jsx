@@ -16,8 +16,10 @@ function Register() {
     setPassword,
     conFirmPassword,
     setConFirmPassword,
+    isPerform,
     // profileImg,
     // setProfileImg,
+    validateEmailFormat,
   } = useContext(AuthContext);
 
   return (
@@ -33,77 +35,136 @@ function Register() {
                 <label htmlFor="FirstName">First Name :</label>
                 <input
                   type="text"
-                  className="form-control"
+                  className={`form-control ${
+                    !firstName.length && isPerform ? 'border-danger' : ''
+                  }`}
                   placeholder="First Name"
-                  required
+                  // required
                   value={firstName}
                   onChange={e => setFirstName(e.target.value)}
                 />
+                <small
+                  style={{ color: 'red' }}
+                  className={`${
+                    !firstName.length && isPerform ? '' : 'd-none'
+                  }`}
+                >
+                  Firs name is required field
+                </small>
               </div>
 
               <div className="form-group mb-3">
                 <label htmlFor="LastName">Last Name :</label>
                 <input
                   type="text"
-                  className="form-control"
+                  className={`form-control ${
+                    !lastName.length && isPerform ? 'border-danger' : ''
+                  }`}
                   placeholder="Last Name"
-                  required
+                  // required
                   value={lastName}
                   onChange={e => setLastName(e.target.value)}
                 />
+
+                <small
+                  style={{ color: 'red' }}
+                  className={!lastName.length && isPerform ? '' : 'd-none'}
+                >
+                  Last name is required field
+                </small>
               </div>
 
               <div className="form-group mb-3">
                 <label htmlFor="Email">Email :</label>
                 <input
-                  type="email"
-                  className="form-control"
+                  className={`form-control ${
+                    !email.length && isPerform ? 'border-danger' : ''
+                  } ${
+                    !validateEmailFormat(email) && email.length && isPerform
+                      ? 'border-danger'
+                      : ''
+                  }`}
                   aria-describedby="email"
                   placeholder="Email address"
-                  required
                   value={email}
                   onChange={e => setEmail(e.target.value)}
                 />
+                <small
+                  style={{ color: 'red' }}
+                  className={!email.length && isPerform ? '' : 'd-none'}
+                >
+                  Email is required
+                </small>
+                <small
+                  style={{ color: 'red' }}
+                  className={
+                    !validateEmailFormat(email) && email.length && isPerform
+                      ? ''
+                      : 'd-none'
+                  }
+                >
+                  Email format is incorrect
+                </small>
               </div>
 
               <div className="form-group mb-3">
                 <label htmlFor="Password">Password :</label>
                 <input
                   type="password"
-                  className="form-control"
+                  className={`form-control ${
+                    password.length < 8 && isPerform ? 'border-danger' : ''
+                  }`}
                   id="Password"
                   placeholder="Password"
-                  required
+                  // required
                   value={password}
                   onChange={e => setPassword(e.target.value)}
                 />
+                <small
+                  style={{ color: 'red' }}
+                  className={password.length < 8 && isPerform ? '' : 'd-none'}
+                >
+                  Password must not be less than 8 characters
+                </small>
               </div>
 
               <div className="form-group mb-4">
                 <label htmlFor="confirm-password">Confirm Password :</label>
                 <input
                   type="password"
-                  className="form-control"
+                  className={`form-control ${
+                    password !== conFirmPassword && isPerform
+                      ? 'border-danger'
+                      : ''
+                  }`}
                   id="ConfirmPassword"
                   placeholder="Confirm Password"
-                  required
+                  // required
                   value={conFirmPassword}
                   onChange={e => setConFirmPassword(e.target.value)}
                 />
+                <small
+                  style={{ color: 'red' }}
+                  className={
+                    password !== conFirmPassword && isPerform ? '' : 'd-none'
+                  }
+                >
+                  password is not match
+                </small>
               </div>
 
               <button
                 type="submit"
                 className="btn btn-primary col-md-12 text-center mb-4 "
-                disabled={!conFirmPassword}
+                // disabled={!conFirmPassword}
               >
                 Sign Up
               </button>
 
               <div className="mb-4">
-                You have an account?{' '}
+                You have an account?
                 <Link to="/login" className="text-indigo-500 hover:underline ">
-                  Login!{' '}
+                  Login!
                 </Link>
               </div>
             </form>
